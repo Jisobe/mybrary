@@ -11,50 +11,44 @@ Key functionality:
 ## Models/Database
 
 user
----
-id pk
-username charfield(60) fk - loaned.user
-password charfield(25) (req)
+- id pk
+- username charfield(60) fk - loaned.user
+- password charfield(25) (req)
 
 posts
----
-id pk
-poster-username FK >- user.id (req)
-title charfield(100) (req)
-description textfield(255) (req)
-book FK >- books.id
+- id pk
+- poster-username FK >- user.id (req)
+- title charfield(100) (req)
+- description textfield(255) (req)
+- book FK >- books.id
 
 library
----
-id pk
-owner FK >- user.id
-name charfield(255) (req)
-public boolean
+- id pk
+- owner FK >- user.id
+- name charfield(255) (req)
+- public boolean
 
 post-comments
----
-id pk
-commenter FK >- user.id 
-postid FK >- posts.id 
+- id pk
+- commenter FK >- user.id 
+- postid FK >- posts.id 
 
 books
----
-id pk FK >- loaned.books
-title charfield(255) (req)
-description charfield(255)
-author charfield(255)
-location FK >- library.id (req)
-loaned boolean
-copies int
-rating int(5)
+- id pk FK >- loaned.books
+- title charfield(255) (req)
+- description charfield(255)
+- author charfield(255)
+- location FK >- library.id (req)
+- loaned boolean
+- copies int
+- rating int(5)
 
 loaned
----
-id pk
-books
-user
-loaned-to-name charfield(255)
-loaned-to-user FK - user.username
+- id pk
+- books
+- user
+- loaned-to-name charfield(255)
+- loaned-to-user FK - user.username
 
 ## Still working items
 
