@@ -1,0 +1,4 @@
+.tab-pane{
+  display: flex;
+  flex-wrap: wrap;
+}

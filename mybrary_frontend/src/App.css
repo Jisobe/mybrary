@@ -1,0 +1,31 @@
+html {
+  height: 100%;
+}
+
+body {
+  padding: 10px;
+  height: 100vh;
+  --bs-body-bg: #D8D2CB;
+}
+
+.App {
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+  color: #1C658C;
+}
+
+.page {
+  text-align: center;
+  height: 100vmin;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+

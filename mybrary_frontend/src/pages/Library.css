@@ -1,0 +1,40 @@
+.lib-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.card{
+  border-radius: 10px
+}
+
+.card-header{
+  background-color: #1C658C;
+  color: #EEEEEE
+}
+
+.card-body{
+  background-color: #398AB9;
+  color: black;
+  border-radius: 0px 0px 10px 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-text{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+
+.popover{
+  border-radius: 13px;
+  display: flex;
+  flex-direction: column;
+  min-width: min-content;
+}
+
+.popover-body{
+  display: flex;
+}
+

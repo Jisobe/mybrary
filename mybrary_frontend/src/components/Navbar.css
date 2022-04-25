@@ -1,0 +1,95 @@
+.nav-container{
+  /* border: solid black 1px; */
+  height: 60px;
+  border-radius: 10px; 
+}
+
+.nav-row{
+  height: 60px;
+  display: flex;
+}
+
+.logo{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.name{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px
+}
+
+.name-link{
+  text-decoration: none;
+  color: black;
+}
+
+.name-link:visited{
+  color: none;
+}
+
+.name-link:hover{
+  color: black;
+}
+
+.login{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.menu-body{
+  display: flex;
+  flex-direction: column;
+}
+
+.popover-header{
+  text-align: center;
+  background-color: #1C658C;
+  border-radius: 10px 10px 0px 0px;
+  color:#EEEEEE;
+}
+
+.nav-offcanvas{
+  height: 500px;
+  width: 200px;
+  background-color: #1C658C;
+  color: white;
+  border-radius: 10px;
+  margin-left: 2px;
+}
+
+.popover-main{
+  border-radius: 10px;
+}
+
+.btn {
+  background-color: #1C658C;
+  border-radius: 10px;
+  border: 1px solid #1C658C;
+}
+
+.btn:active{
+  background-color: #1C658C;
+  border-radius: 10px;
+  border: 1px solid #1C658C;
+}
+
+.btn:hover{
+  background-color: #1C658C;
+  border-radius: 10px;
+  border: 1px solid #1C658C;
+}
+
+.btn {
+  background-color: #1C658C;
+  border-radius: 10px;
+  border: 1px solid #1C658C;
+}
+
+.nav-offcanvas-name{
+  color: #EEEEEE;
+}

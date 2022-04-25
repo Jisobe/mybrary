@@ -1,0 +1,29 @@
+.mybrary-home-container {
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.mybrary-home-row{
+  display:flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.mybrary-home-col{
+  display:flex;
+  justify-content: center;
+  height: 100%;
+  font-size: 20px;
+  align-items: center;
+}
+
+.dropdown-menu{
+  background-color: #1C658C;
+}
+
+.dropdown-item{
+  background-color: #1C658C;
+  color: #EEEEEE;
+}

@@ -1,0 +1,13 @@
+.home-intro{
+  display:flex;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
+  font-size: 40px;
+}
+
+.home-carousel{
+  display:flex;
+  justify-content: center;
+  height: 100%;
+}

@@ -54,3 +54,9 @@ loaned
 
 - how to indicate 'loaned' books as part of location. boolean field in book model?
 - add usernames to loaned to field in loaned models while also allowing entering custom names
+
+## colors
+- 1C658C
+- 398AB9
+- D8D2CB
+- EEEEEE

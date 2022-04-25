@@ -1,0 +1,46 @@
+.container{
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header{
+  background-color: #1C658C;
+  color: #EEEEEE;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-body{
+  background-color: #398AB9;
+  color: black;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.card{
+  border-radius: 10px
+}
+.card-header-inner{
+  color: #EEEEEE;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-body-inner{
+  background-color: #EEEEEE;
+}
+
+.title-link{
+  text-decoration: none;
+  color: #EEEEEE;
+}
+
+.card-text{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.card-link-inner{
+  text-decoration: none;
+  color: #EEEEEE;
+}
