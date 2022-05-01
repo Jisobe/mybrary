@@ -1,0 +1,31 @@
+.post-card{
+  display:flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.user-post-card-body-inner{
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.new-post-button{
+  width: fit-content;
+  margin: 20px;
+}
+
+.row{
+  display:flex;
+  justify-content: space-evenly;
+}
+
+.post{
+  display: flex;
+}
+
+.user-post-card-text-inner{
+  flex-direction: column;
+  justify-content: space-between;
+}

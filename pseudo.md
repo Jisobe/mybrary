@@ -54,9 +54,25 @@ loaned
 
 - how to indicate 'loaned' books as part of location. boolean field in book model?
 - add usernames to loaned to field in loaned models while also allowing entering custom names
-
+- look-up form data
+- add password confirm in signup
+- add modals to delete, add, login conf
+- add alerts to delete, add
+- yelp or google to lookup nearby stores
+- move set user book from post and book to component
+- re-eval code based on having complete user data - my-post: loading posts
+- make public and private
+- change routing for home page and library - home page conditional renders lib/community etc icons if user logged in
+- search books based on author or title
+- add book img to: NYT list, search results, library, posts
+- update search book - click on book to show detail and add, add back to results (all within modal?)
+- select multiple books in post update
 ## colors
 - 1C658C
 - 398AB9
 - D8D2CB
 - EEEEEE
+
+
+- title 
+- author_name

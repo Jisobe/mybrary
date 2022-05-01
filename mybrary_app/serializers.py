@@ -5,7 +5,7 @@ from .models import Library, Book, Post, Comment, WishList, User, SocialGroup, F
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'first_name', 'last_name', 'password')
+        fields = ('id', 'username', 'email', 'first_name', 'last_name', 'password', 'library', 'wishList', 'post', 'comment', 'social_group', 'request_from', 'request_to', 'book', 'friends')
 
     password = serializers.CharField(write_only=True)
     def create(self, validated_data):

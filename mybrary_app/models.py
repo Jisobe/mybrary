@@ -7,18 +7,22 @@ class FieldNamesMixin:
         return [field.name for field in cls._meta.get_fields()]
 class User(User):
     friends = models.ManyToManyField(User, related_name="friends", blank=True)
+
+    def __str__(self):
+        return self.username
 class Library(models.Model, FieldNamesMixin):
-    owner = models.ForeignKey(User, related_name='library', on_delete=models.CASCADE, blank=False)
+    owner = models.OneToOneField(User, related_name='library', on_delete=models.CASCADE, blank=False)
     name = models.CharField(max_length=100, blank=False)
-    public = models.BooleanField(default=False)
+    # public = models.BooleanField(default=False)
 class WishList(models.Model, FieldNamesMixin):
-    owner = models.ForeignKey(User, related_name='wishList', on_delete=models.CASCADE, blank=False)
+    owner = models.OneToOneField(User, related_name='wishList', on_delete=models.CASCADE, blank=False)
     name = models.CharField(max_length=100, blank=False)
-    public = models.BooleanField(default=False)
+    # public = models.BooleanField(default=False)
 class Book(models.Model, FieldNamesMixin):
     title = models.CharField(max_length=255, blank=False, null=False)
     description = models.CharField(max_length=255)
     author = models.CharField(max_length=100)
+    owner = models.ForeignKey(User, related_name='book', on_delete=models.CASCADE, blank=True, null=True)
     library = models.ForeignKey(Library, related_name='book', on_delete=models.CASCADE, blank=True, null=True)
     wishList = models.ForeignKey(WishList, related_name='book', on_delete=models.CASCADE, blank=True, null=True)
     location = models.CharField(max_length=255, blank=True, null=True)
@@ -40,4 +44,4 @@ class SocialGroup(models.Model, FieldNamesMixin):
     members = models.ManyToManyField(User, related_name='social_group', blank=True)
 class Friend(models.Model, FieldNamesMixin):
     from_user = models.ForeignKey(User, related_name='request_from', on_delete=models.CASCADE, blank=False)
-    to_user = models.ForeignKey(User, related_name='to_from', on_delete=models.CASCADE, blank=False)
+    to_user = models.ForeignKey(User, related_name='request_to', on_delete=models.CASCADE, blank=False)

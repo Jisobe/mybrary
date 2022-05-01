@@ -4,14 +4,14 @@
 }
 
 .card-header{
-  background-color: #1C658C;
-  color: #EEEEEE;
+  background-color: #1A374D;
+  color: #ffffff;
   display: flex;
   justify-content: space-between;
 }
 
 .card-body{
-  background-color: #398AB9;
+  background-color: #B1D0E0;
   color: black;
   border-radius: 0px 0px 10px 10px;
 }
@@ -20,18 +20,18 @@
   border-radius: 10px
 }
 .card-header-inner{
-  color: #EEEEEE;
+  color: #ffffff;
   display: flex;
   justify-content: space-between;
 }
 
 .card-body-inner{
-  background-color: #EEEEEE;
+  background-color: #ffffff;
 }
 
 .title-link{
   text-decoration: none;
-  color: #EEEEEE;
+  color: #ffffff;
 }
 
 .card-text{
@@ -42,5 +42,5 @@
 
 .card-link-inner{
   text-decoration: none;
-  color: #EEEEEE;
+  color: #ffffff;
 }

@@ -32,7 +32,7 @@ def handle_login(request):
 def handle_logout(request):
     try:
         if request.method == 'POST':
-            login(request)
+            logout(request)
             return JsonResponse(data={'status': 'Logged Out'}, status=200)
 
     except Exception as e:

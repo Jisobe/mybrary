@@ -15,7 +15,7 @@ function Community() {
       elements.push(
         <Link className="card-link-inner" to={`/post/${i}`}> 
           <Card style = {{width: '14.5rem', height: '18rem'}} className="card-inner">
-            <Card.Header className="card-header-inner" as="h5">Recent Posts</Card.Header>
+            <Card.Header className="card-header-inner" >Recent Posts</Card.Header>
             <Card.Body className="card-body-inner">
               <Card.Text className="card-text-inner">
               </Card.Text>
@@ -34,7 +34,7 @@ function Community() {
       elements.push(
         <Link className="card-link-inner" to={`/post/${i}`}> 
           <Card style = {{width: '14.5rem', height: '18rem'}} className="card-inner">
-            <Card.Header className="card-header-inner" as="h5">Recent Posts</Card.Header>
+            <Card.Header className="card-header-inner" >Recent Posts</Card.Header>
             <Card.Body className="card-body-inner">
               <Card.Text className="card-text-inner">
               </Card.Text>
@@ -53,7 +53,7 @@ function Community() {
       elements.push(
         <Link className="card-link-inner" to={`/group/${i}`}> 
           <Card style = {{width: '14.5rem', height: '18rem'}} className="card-inner">
-            <Card.Header className="card-header-inner" as="h5">Groups</Card.Header>
+            <Card.Header className="card-header-inner" >Groups</Card.Header>
             <Card.Body className="card-body-inner">
               <Card.Text className="card-text-inner">
               </Card.Text>
@@ -72,7 +72,7 @@ function Community() {
       elements.push(
         <Link className="card-link-inner" to={`/friend/${i}`}> 
           <Card style = {{width: '14.5rem', height: '18rem'}} className="card-inner">
-            <Card.Header className="card-header-inner" as="h5">Friends</Card.Header>
+            <Card.Header className="card-header-inner" >Friends</Card.Header>
             <Card.Body className="card-body-inner">
               <Card.Text className="card-text-inner">
               </Card.Text>

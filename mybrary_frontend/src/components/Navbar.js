@@ -1,12 +1,15 @@
 import React from 'react';
 import { Row, Container, Col, Button, Offcanvas, Popover, Overlay } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 import { useState, useRef } from 'react';
 import Login from './Login';
+import MybraryApi from '../api/MybraryApi';
+import Logo from '../img/Mybrary.png';
 
-function Nav() {
+function Nav(props) {
 
+  const navigate = useNavigate()
   // helpers for menu off canvas
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -17,13 +20,56 @@ function Nav() {
   const [target, setTarget] = useState(null);
   const ref = useRef(null);
 
-  const handleClick = (event) => {
+  const handleClick = (e) => {
     setShowLogin(!showLogin);
-    setTarget(event.target);
+    setTarget(e.target);
   };
 
   const onHide = () => {
     setShowLogin(!showLogin);
+  }
+
+  //logout
+  const handleLogout = async () => {
+    const data = await MybraryApi.logoutUser()
+    if (data){
+      props.setUsername('');
+      props.setUser([])
+      navigate('/')
+    }
+  }
+
+  const renderAuth = () => {
+    if (props.username === ''){
+      return (
+        <div ref={ref}>
+          <Button onClick={handleClick}>Login</Button>
+          <Overlay
+            show={showLogin}
+            target={target}
+            placement="left"
+            container={ref}
+            containerPadding={20}
+            rootClose ='true'
+            onHide = {onHide}
+            rootCloseEvent='click'
+          >
+            <Popover id="popover-contained">
+              <Popover.Header as="h3">Login</Popover.Header>
+              <Popover.Body>
+                <Login setUsername={props.setUsername} username={props.username} setUser={props.setUser} user={props.user}/>
+              </Popover.Body>
+            </Popover>
+          </Overlay>
+        </div>
+      )
+    }
+    return (
+      <>
+        <p className="welcome">Welcome, {props.username}</p>
+        <Button onClick={ handleLogout }>Logout</Button>
+      </>
+    )
   }
 
   return (
@@ -44,28 +90,9 @@ function Nav() {
             </Offcanvas.Body>
           </Offcanvas>
         </Col>
-        <Col className='name'><Link to='/' className='name-link'>Mybrary</Link></Col>
+        <Col className='name'><Link to='/' className='name-link'><img className='logo' src={Logo} alt='Logo' /></Link></Col>
         <Col className='login'>
-          <div ref={ref}>
-            <Button onClick={handleClick}>Login</Button>
-            <Overlay
-              show={showLogin}
-              target={target}
-              placement="left"
-              container={ref}
-              containerPadding={20}
-              rootClose ='true'
-              onHide = {onHide}
-              rootCloseEvent='click'
-            >
-              <Popover id="popover-contained">
-                <Popover.Header as="h3">Login</Popover.Header>
-                <Popover.Body>
-                  <Login/>
-                </Popover.Body>
-              </Popover>
-            </Overlay>
-          </div>
+          { renderAuth() }
         </Col>
       </Row>
     </Container>

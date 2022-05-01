@@ -21,3 +21,69 @@
 .form-control{
   height : fit-content;
 }
+
+.select{
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.label{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex: none;
+  align-items: center;
+}
+
+.search-results {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-body {
+  display: flex;
+  row-gap: 10px;
+  flex-direction: column;
+}
+
+.modal-content {
+  width: fit-content;
+}
+
+.modal-dialog {
+  display: flex;
+
+}
+
+.search-results {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+}
+
+.no-search-results {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  align-items: center;
+}
+
+.modal-title {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-header{
+  background-color: #1A374D;
+  color: #fff;
+}
+
+.modal{
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

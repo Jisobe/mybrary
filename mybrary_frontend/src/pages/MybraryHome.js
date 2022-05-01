@@ -1,33 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import { Container, Col, Row } from 'react-bootstrap';
 import './MybraryHome.css';
+import Community from '../img/Community.png';
+import Library from '../img/Library.png';
+import Queue from '../img/Reading_Queue.png';
+import Wish from '../img/Wish_List.png';
 
 function MybraryHome() {
+
   return (
-    <div className='page'>
-      <Container fluid className="mybrary-home-container m-3">
-        <Row className="mybrary-home-row m-4">
-          <Col className="mybrary-home-col m-3"></Col>
-          <Col className="mybrary-home-col m-3">
-            <Link to="/library">Library</Link>
-          </Col>
-        </Row>
-        <Row className="mybrary-home-row m-3">
-          <Col className="mybrary-home-col m-3"><Link to='/community'>Community</Link></Col>
-          <Col className="mybrary-home-col m-3"></Col>
-        </Row>
-        <Row className="mybrary-home-row m-3">
-          <Col className="mybrary-home-col m-3"></Col>
-          <Col className="mybrary-home-col m-3"><Link to='/queue'>Reading Queue</Link></Col>
-        </Row>
-        <Row className="mybrary-home-row m-3">
-          <Col className="mybrary-home-col m-3">
-            <Link to="/wishlist">Wishlists</Link>
-          </Col>
-          <Col className="mybrary-home-col m-3"></Col>
-        </Row>
-      </Container>
+    <div className='page '>
+      <div className='mybrary-home-container'>
+            <Link to="/library"><img className='logo' src={Library} alt='Library logo' /></Link>
+            <Link to='/community'><img className='logo' src={Community} alt='Community logo' /></Link>
+            <Link to='/queue'><img className='logo' src={Queue} alt='Reading Queue logo' /></Link>
+            <Link to="/wishlist"><img className='logo' src={Wish} alt='Wish list logo' /></Link>
+      </div>
     </div>
   )
 }

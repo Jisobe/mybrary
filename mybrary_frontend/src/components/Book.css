@@ -7,15 +7,13 @@
   border-radius: 10px
 }
 
-#card-header-lib{
-  display: flex;
+.card-header{
   background-color: #1A374D;
-  color: #EEEEEE;
-  justify-content: center;
+  color: #ffffff
 }
 
 .card-body{
-  background-color: #B1D0E0;
+  background-color: #ffffff;
   color: black;
   border-radius: 0px 0px 10px 10px;
   display: flex;
@@ -25,7 +23,7 @@
 .card-text{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-evenly; 
 }
 
 
@@ -34,19 +32,21 @@
   display: flex;
   flex-direction: column;
   min-width: min-content;
+  background-color: #ffffff;
 }
 
 .popover-body{
+  border-radius: 13px;
   display: flex;
+  background-color: #ffffff;
+  color: #1A374D;
 }
 
-.lib-link{
-  text-decoration: none;
-  color: #ffffff;
+.nav-link{
+  color: #1A374D;
 }
 
-.name-lib{
+.tab-pane{
   display: flex;
-  gap: 50px;
-  justify-content: center;
+  flex-wrap: wrap;
 }

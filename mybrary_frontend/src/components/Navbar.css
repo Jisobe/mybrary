@@ -1,11 +1,13 @@
-.nav-container{
-  /* border: solid black 1px; */
-  height: 60px;
-  border-radius: 10px; 
+
+
+.nav-container {
+  background-image: url('../img/book_tops.png');
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: cover;
 }
 
 .nav-row{
-  height: 60px;
   display: flex;
 }
 
@@ -13,6 +15,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  height: 150px;
 }
 
 .name{
@@ -24,11 +27,12 @@
 
 .name-link{
   text-decoration: none;
-  color: black;
+  color: #1A374D ;
+
 }
 
 .name-link:visited{
-  color: none;
+  color: #1A374D;
 }
 
 .name-link:hover{
@@ -46,9 +50,14 @@
   flex-direction: column;
 }
 
+.popover-body{
+  background-color: #ffffff;
+  border-radius: 13px;
+  color: #1A374D;
+}
 .popover-header{
   text-align: center;
-  background-color: #1C658C;
+  background-color: #1A374D;
   border-radius: 10px 10px 0px 0px;
   color:#EEEEEE;
 }
@@ -56,40 +65,62 @@
 .nav-offcanvas{
   height: 500px;
   width: 200px;
-  background-color: #1C658C;
-  color: white;
+  background-color: #B1D0E0;
+  color: #1A374D;
   border-radius: 10px;
   margin-left: 2px;
 }
 
 .popover-main{
+  background-color: #B1D0E0;
   border-radius: 10px;
 }
 
 .btn {
-  background-color: #1C658C;
+  background-color: #1A374D;
   border-radius: 10px;
-  border: 1px solid #1C658C;
+  border: 1px solid #1A374D;
 }
 
 .btn:active{
-  background-color: #1C658C;
+  background-color: #1A374D;
   border-radius: 10px;
-  border: 1px solid #1C658C;
+  border: 1px solid #1A374D;
+}
+
+.btn:focus {
+  background-color: #1A374D;
+  border: 1px solid #1A374D;
+  outline: none;
+  outline-offset: none;
+  box-shadow: none;
 }
 
 .btn:hover{
-  background-color: #1C658C;
+  background-color: #406882;
   border-radius: 10px;
-  border: 1px solid #1C658C;
+  border: 1px solid #406882;
 }
 
 .btn {
-  background-color: #1C658C;
+  background-color: #1A374D;
   border-radius: 10px;
-  border: 1px solid #1C658C;
+  border: 1px solid #1A374D;
 }
 
 .nav-offcanvas-name{
-  color: #EEEEEE;
+  color: #1A374D;
+}
+
+.welcome{
+  font-size: 20px;
+  margin-bottom:0;
+  padding-right: 1rem;
+}
+
+.nav-link{
+  color: #1A374D;
+}
+.nav-link:hover{
+  color: #406882;
 }

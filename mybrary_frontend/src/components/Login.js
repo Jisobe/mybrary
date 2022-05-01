@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Container } from 'react-bootstrap'
-import './Login.css'
+import { Link, useNavigate } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
+import './Login.css';
+import MybraryApi from '../api/MybraryApi';
 
+function Login(props) {
 
-function Login() {
+  // submit login for and set username
+  const [errors, setErrors] = useState({})
+  const navigate = useNavigate()
 
   const [formData, setFormData] = useState({    
     username: '',
@@ -13,12 +17,35 @@ function Login() {
 
   const { username, password } = formData
 
-  const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value})
+  const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value})
 
-  const onSubmit = e => {
+  const onSubmit = async (e) => {
     e.preventDefault()
+    setErrors({})
+    let loginData = {
+      username: username,
+      password: password,
+    }
 
+    const logData = await MybraryApi.loginUser(loginData)
+    if (logData){
+      props.setUsername(logData.username);
+      navigate('/mybrary')
+    }
+    else (setErrors({error : "Please try again"}))
   }
+
+  // useEffect(() => {
+  //   loadUser()
+  //   // eslint-disable-next-line
+  // }, [])
+
+  // const loadUser = async () => {
+  //   const data = await MybraryApi.getAllUsers()
+  //   props.setUser(data ? data : [])
+  // }
+
+  // console.log('login user', props.user)
   
 
   return (
@@ -50,6 +77,7 @@ function Login() {
           </div>
           <button className="btn btn-primary" type='submit'>Login</button>
         </form>
+        { errors.error && <p> { errors.error } </p>}
         <p className="mt-1">
           Need an Account? <Link to='/signup'>Sign up</Link>
         </p>

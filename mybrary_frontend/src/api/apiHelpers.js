@@ -1,13 +1,11 @@
-//this is only required for a separate project setup
+import Cookie from "js-cookie"
 
 const apiHelpers = {}
-
-import Cookie from "js-cookie"
 
 // added for authentication
 apiHelpers.getCsrfConfig = () => {
   return { 
-    withCredentials: true, 
+    withCredentials: true, // this is only required for a separate project setup
     headers: {
       'X-CSRFToken': Cookie.get("csrftoken")
     }
@@ -25,13 +23,4 @@ apiHelpers.tryCatchFetch = async (axiosCall) => {
   }
 };
 
-// in MybraryApi.js 
-
-// import apiHelpers from './apiHelpers'
-
-// ToDoAPI.getAllTaskLists = async () => {
-//   return await apiHelpers.tryCatchFetch(
-//     () => axios.get(`${BASE_URL}/task-lists/`, apiHelpers.getCsrfConfig())) // sending config
-// }
-
-// // need to add `apiHelpers.getCsrfConfig()` to the end of the axios call for the token
+export default apiHelpers
