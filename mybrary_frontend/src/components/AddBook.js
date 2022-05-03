@@ -91,14 +91,18 @@ function AddBook(props) {
     }
   }
 
+  // https://covers.openlibrary.org/b/id/10521270-L.jpg -- number is cover_i
+
   const showSearchResults = () => {
     if(searchResults[0] !== undefined){
       return( searchResults.map((result) => {
+        console.log(result)
         while (result !== undefined){
           return(
             <div className="search-results">
-              <div key={result.id}>{result['title']}</div>
-              <Button onClick={ () => addSearched(result)}>Add</Button>
+              {result['cover_i'] && <img src={`https://covers.openlibrary.org/b/id/${result['cover_i']}-M.jpg`}  alt={result['title']} onClick={ () => addSearched(result)}/>}
+              {!result['cover_i'] && <Button onClick={ () => addSearched(result)}><div key={result.id}>{result['title']}</div></Button>}
+              {/* <Button onClick={ () => addSearched(result)}>Add</Button> */}
             </div>
           )
         }

@@ -11,7 +11,6 @@ import Book from '../components/Book'
 
 function Library(props) {
 
-  console.log('-------------start-----------------')
   const navigate = useNavigate()
   const [libraries, setLibraries] = useState([]);
   const [books, setBooks] = useState([]);
@@ -71,6 +70,12 @@ function Library(props) {
     }
   }
 
+  const [inputText, setInputText] = useState("");
+  let inputHandler = (e) => {
+    //convert input text to lower case
+    var lowerCase = e.target.value.toLowerCase();
+    setInputText(lowerCase);
+  }
   //render library 
   const renderLibrary = () => {
     return(
@@ -90,7 +95,18 @@ function Library(props) {
         <Container className="container lib-container">
           <Row className="m-3">
             <Col>
-              <Button><Link className='lib-link' to={Search}>Search Library</Link></Button>
+              <div className="main">
+                <h4>Search</h4>
+                <div className="search">
+                  <input
+                    id="outlined-basic"
+                    onChange={inputHandler}
+                    variant="outlined"
+                    fullWidth
+                    label="Search"
+                  />
+                </div>
+              </div>
             </Col>
             <Col>
               <div ref={refAddBook}>
@@ -121,7 +137,7 @@ function Library(props) {
                 <Card.Header id='card-header-lib' as="h5">Master Book List</Card.Header>
                 <Card.Body>
                   <Card.Text as = 'div' className="card-text">
-                    < Book lib = {lib} books = {books}/>
+                    < Book lib = {lib} books = {books} input={inputText}/>
                   </Card.Text>
                 </Card.Body>
               </Card>

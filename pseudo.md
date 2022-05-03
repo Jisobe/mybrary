@@ -66,7 +66,15 @@ loaned
 - search books based on author or title
 - add book img to: NYT list, search results, library, posts
 - update search book - click on book to show detail and add, add back to results (all within modal?)
-- select multiple books in post update
+- select multiple books in post update/add
+- move render book to component from add post and update post
+- search post based on books
+- fix listing multiple books/comments on posts
+- update font
+- click on NYT book cover to go to book detail
+- list books alphabetically in library 
+- post posts by date
+- in community list 5 most recent posts
 ## colors
 - 1C658C
 - 398AB9

@@ -12,6 +12,7 @@ function Post(props) {
   const [isUpdate, setIsUpdate] = useState(false)
   const [post, setPost] = useState([]);
   const [usersBooks, setUsersBooks] = useState([])
+  const [comments, setComments] = useState([])
   const allBooks = props.user[0]['book'];  
 
 
@@ -25,9 +26,37 @@ function Post(props) {
     setPost(postData ? postData : [])
   }
 
+  //load comments
+  useEffect(() => {
+    loadComment()
+  }, [])
+  
+  const loadComment = async () => {
+      
+    const commentData = await MybraryApi.getAllComments()
+    setComments(commentData ? commentData : [])
+  }
+
+  //load user book information
+  useEffect(() => {
+    loadBook()
+  }, [])
+
+  const loadBook = async () => {
+
+    const userBooks = []
+
+    for (const userBook of allBooks){      
+      const bookData = await MybraryApi.getBook(userBook)
+      userBooks.push(bookData)
+    }
+    
+    setUsersBooks(userBooks)
+  }
+
   //Render delete/update buttons based on user
   const checkPoster = () => {
-    return post['poster'] === props.user.id
+    return post['poster'] === props.user[0]['id']
   }  
 
   //delete post
@@ -59,23 +88,6 @@ function Post(props) {
     }
   }
 
-  //load user book information
-  useEffect(() => {
-    loadBook()
-  }, [])
-
-  const loadBook = async () => {
-
-    const userBooks = []
-
-    for (const userBook of allBooks){      
-      const bookData = await MybraryApi.getBook(userBook)
-      userBooks.push(bookData)
-    }
-    
-    setUsersBooks(userBooks)
-  }
-
   //render book OPTIONS
   const renderBookOptions = () => {
     return (usersBooks.map((book) => {
@@ -89,6 +101,24 @@ function Post(props) {
         )        
       }
     }))
+  }
+
+  // get book title
+  const getBookTitle = (postBook) => {
+    return usersBooks.map((book) => {
+      if(book.id === postBook[0]){
+        return (<td>{book.title}</td>)
+      }
+    })
+  }
+
+  // get comment detail
+  const getCommentDetail = (postComment) => {
+    return comments.map((comment) => {
+      if(comment.id === postComment[0]){
+        return (<div>Comment: {comment.description}</div>);
+      }
+    })
   }
 
   return (
@@ -109,15 +139,17 @@ function Post(props) {
               <tr>
                 <td>{post['title']}</td>
                 <td>{post['description']}</td>
-                <td>{post['book']}</td>
-                <td>{post['comment']}</td>
+                { post['book'] !== undefined && post['book'].length > 0 && getBookTitle(post['book']) }
+                { post['book'] === undefined || post['book'].length === 0 && <td>No Books selected</td> }
+                { post['comment'] !== undefined && post['comment'].length > 0 && getCommentDetail(post['comment']) }
+                { post['comment'] === undefined || post['comment'].length === 0 && <td>No Comments</td> }
               </tr>
             </tbody>
           </Table>
         </div>
         <div className='button-div'>
-          {checkPoster && <Button onClick={ deletePost }>Delete</Button> }
-          {checkPoster && <Button onClick={ selectUpdate }>Update</Button>}
+          {checkPoster() && <Button onClick={ deletePost }>Delete</Button> }
+          {checkPoster() && <Button onClick={ selectUpdate }>Update</Button>}
         </div>
         {isUpdate &&
         <form onSubmit={onSubmit} className="form">
@@ -145,18 +177,9 @@ function Post(props) {
             </div>
             <div className="form-group">
               <label className="form-group-label">Book</label>
-              <select name="book" id="book">
+              <select name="book" id="book" multiple={true}>
                 { renderBookOptions() }
               </select>
-              {/* <input 
-                type="number" 
-                className="form-control"
-                placeholder={post['book']}
-                name="book"
-                defaultValue={post['book']}
-                max='5'
-                required
-              /> */}
             </div>
             {/* <div className="form-group">
               <label className="form-group-label">Comments</label>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tabs, Tab } from 'react-bootstrap';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './AddBook.css'
 import { useNavigate } from 'react-router-dom';
 import MybraryApi from '../api/MybraryApi';
@@ -8,6 +8,8 @@ import MybraryApi from '../api/MybraryApi';
 function AddPost(props) {
 
   const navigate = useNavigate()
+  const [usersBooks, setUsersBooks] = useState([])
+  const allBooks = props.user[0]['book'];
   
   const [formData, setFormData] = useState({    
     title: '',
@@ -20,10 +22,13 @@ function AddPost(props) {
   const { title, description, book, poster, comment} = formData
   
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value})
+  const onChangeBook = e => setFormData({ ...formData, [e.target.name]: [e.target.value]})
+
   
   const onSubmit = async (e) => {
     e.preventDefault()
     
+    console.log(book)
     let postData = {
       title: title,
       description: description,
@@ -37,6 +42,32 @@ function AddPost(props) {
     if (data) {
       navigate('/community')
     }
+  }
+
+  //load user book information
+  useEffect(() => {
+    loadBook()
+  }, [])
+  
+  const loadBook = async () => {
+  
+      const userBooks = []
+  
+      for (const userBook of allBooks){      
+        const bookData = await MybraryApi.getBook(userBook)
+        userBooks.push(bookData)
+      }
+      
+      setUsersBooks(userBooks)
+    }
+
+  //render book OPTIONS
+  const renderBookOptions = () => {
+    return (usersBooks.map((book) => {
+      return (
+        <option value={book.id}>{book.title}</option>        
+      )        
+    }))
   }
   
   return (
@@ -65,6 +96,12 @@ function AddPost(props) {
                 onChange={onChange}
                 required
               />
+            </div>
+            <div className="form-group">
+              <label className="form-group-label">Book</label>
+              <select name="book" id="book" onChange={onChangeBook} multiple={true}>
+                { renderBookOptions() }
+              </select>
             </div>
             <button className="btn btn-primary" type='submit'>Add</button>
           </form>

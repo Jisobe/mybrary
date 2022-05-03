@@ -50,3 +50,16 @@
   gap: 50px;
   justify-content: center;
 }
+
+.main{
+  display: flex;
+  align-items: center;
+}
+
+.search{
+  border-radius: 40px;
+}
+
+h4{
+  margin: 0
+}

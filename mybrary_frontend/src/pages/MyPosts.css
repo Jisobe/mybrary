@@ -19,6 +19,8 @@
 .row{
   display:flex;
   justify-content: space-evenly;
+  gap: 50px;
+  line-height: normal; 
 }
 
 .post{
@@ -28,4 +30,10 @@
 .user-post-card-text-inner{
   flex-direction: column;
   justify-content: space-between;
+}
+
+.delete{
+  margin-top: 10px;
+  width: fit-content;
+  align-self: center;
 }

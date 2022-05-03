@@ -27,8 +27,18 @@ function Book(props) {
     setUsersBooks(userBooks)
   }  
 
+  const filteredData = usersBooks.filter((book) => {
+
+    if (props.input === '') {
+        return book;
+    }
+    else {
+        return book.title.toLowerCase().includes(props.input)
+    }
+  })  
+
   const renderBookList = () => {
-    return (usersBooks.map((usersBook) => {
+    return (filteredData.map((usersBook) => {
       return(
         <div key={usersBook['id']}>
           <Button><Link className='lib-link' to={`/book/${usersBook['id']}`}>{usersBook['title']}</Link></Button>

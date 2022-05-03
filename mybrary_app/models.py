@@ -11,11 +11,11 @@ class User(User):
     def __str__(self):
         return self.username
 class Library(models.Model, FieldNamesMixin):
-    owner = models.OneToOneField(User, related_name='library', on_delete=models.CASCADE, blank=False)
+    owner = models.OneToOneField(User, related_name='library', on_delete=models.CASCADE, blank=True, null=True)
     name = models.CharField(max_length=100, blank=False)
     # public = models.BooleanField(default=False)
 class WishList(models.Model, FieldNamesMixin):
-    owner = models.OneToOneField(User, related_name='wishList', on_delete=models.CASCADE, blank=False)
+    owner = models.OneToOneField(User, related_name='wishList', on_delete=models.CASCADE, blank=True, null=True)
     name = models.CharField(max_length=100, blank=False)
     # public = models.BooleanField(default=False)
 class Book(models.Model, FieldNamesMixin):
@@ -29,6 +29,7 @@ class Book(models.Model, FieldNamesMixin):
     isLoaned = models.BooleanField(default=False)
     copies = models.IntegerField(default=1)
     rating = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)], blank=True, null=True)
+    # image = models.ImageField( blank=True, null=True, upload_to='covers')
 class Post(models.Model, FieldNamesMixin):
     title = models.CharField(max_length=100, blank=False, null=False)
     description = models.TextField(null=True, blank=True)

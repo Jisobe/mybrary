@@ -20,6 +20,7 @@ import Post from './components/Post';
 import Group from './components/Group';
 import Friend from './components/Friend';
 import AboutBook from './components/AboutBook';
+import AddComment from './components/AddComment';
 import VerifyLogin from './pages/VerifyLogin';
 import MybraryApi from './api/MybraryApi';
 
@@ -52,6 +53,7 @@ function App() {
           <Route path='/community' element={< VerifyLogin username={ username } setUsername={ setUsername } signedInPage= { () => <Community user={ user }/>} />} />
           <Route path='/posts'element={< VerifyLogin username={ username } setUsername={ setUsername } signedInPage= { () => <Posts user={ user }/>} />} />
           <Route path='/post/:id' element={< VerifyLogin username={ username } setUsername={ setUsername } signedInPage= { () => <Post user={ user }/>} />} />
+          <Route path='/post/:id/comment' element={< VerifyLogin username={ username } setUsername={ setUsername } signedInPage= { () => <AddComment user={ user }/>} />} />
           <Route path='/my-posts' element={< VerifyLogin username={ username } setUsername={ setUsername } signedInPage= { () => <MyPosts user={ user }/>} />} />
           <Route path='/groups' element={< VerifyLogin username={ username } setUsername={ setUsername } signedInPage= { () => <Groups user={ user }/>} />} />
           <Route path='/group/:id' element={< VerifyLogin username={ username } setUsername={ setUsername } signedInPage= { () => <Group user={ user }/>} />} />

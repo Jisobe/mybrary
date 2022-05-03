@@ -6,8 +6,35 @@
   font-size: 40px;
 }
 
-.home-carousel{
-  display:flex;
+.carousel{
+  display: flex;
   justify-content: center;
   height: 100%;
+}
+
+.carousel-control-prev{
+  background-color: #1a374d;
+  opacity: 1;
+  margin-top: 200px;
+  height:fit-content;
+  width:fit-content;
+}
+.carousel-control-next{
+  background-color: #1a374d;
+  opacity: 1;
+  margin-top: 200px;
+  height:fit-content;
+  width:fit-content;
+  align-items: center;
+  display: flex;
+}
+
+.carousel-inner{
+  margin-top: 50px;
+  display: flex;
+  height:fit-content;
+}
+
+.carousel-item{
+  height:fit-content;
 }

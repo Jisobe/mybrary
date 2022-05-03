@@ -4,12 +4,15 @@ import { Container, Row, Col, Card, Popover, Button, Overlay } from 'react-boots
 import { Link, useNavigate } from 'react-router-dom';
 import MybraryApi from '../api/MybraryApi';
 import './MyPosts.css'
-import Add from '../components/AddPost'
+import AddPost from '../components/AddPost'
+import AddComment from '../components/AddComment'
 
 function MyPosts(props) {
 
   const [posts, setPosts] = useState([]);
   const [usersBooks, setUsersBooks] = useState([])
+  const [comments, setComments] = useState([])
+  const allBooks = props.user[0]['book']; 
   // const userPostId = props.user[0].post
 
   //load all 
@@ -27,25 +30,69 @@ function MyPosts(props) {
     return userPosts.push(posts.filter(post => post.poster === props.user[0].id))
   }
 
-  console.log(userPosts)
-
-  // get book title
+  //load user book information
   useEffect(() => {
     loadBook()
   }, [])
-
+  
   const loadBook = async () => {
 
     const userBooks = []
 
-    userPosts[0].map((post) => {
+    for (const userBook of allBooks){      
       const bookData = await MybraryApi.getBook(userBook)
-      userBooks.push(bookData)      
-    } )   
-    
+      userBooks.push(bookData)
+    }
     
     setUsersBooks(userBooks)
   }
+
+  //load comments
+  useEffect(() => {
+    loadComment()
+  }, [])
+  
+  const loadComment = async () => {
+      
+    const commentData = await MybraryApi.getAllComments()
+    setComments(commentData ? commentData : [])
+  }
+
+// get book title
+  const getBookTitle = (postBook) => {
+    return usersBooks.map((book) => {
+      if(book.id === postBook[0]){
+        return (<div>Book: {book.title}</div>)
+      }
+    })
+  }
+
+// get comment detail
+  const getCommentDetail = (postComments) => {
+    for(let postComment of postComments) {
+      return comments.map((comment) => {
+        console.log('comment', comment)
+        console.log('postComment', postComment)
+        if(comment.id === postComment){
+          return (<div>Comment: {comment.description}</div>)
+        }
+      })
+    }
+  }
+
+  //render add post popover
+  const [showAddPost, setShowAddPost] = useState(false);
+  const [targetAddPost, setTargetAddPost] = useState(null);
+  const refAddPost = useRef(null);
+
+  const handleClickAddPost = (event) => {
+    setShowAddPost(!showAddPost);
+    setTargetAddPost(event.target);
+  };
+
+  const onHideAddPost = () => {
+    setShowAddPost(!showAddPost);
+  };
 
   const renderPosts = () => {
     getUserPosts()
@@ -59,11 +106,14 @@ function MyPosts(props) {
                 <Card.Text className="user-post-card-text-inner">
                   <div>{post['description']}</div>
                   <hr/>
-                  {/* <div>Book: { getBookTitle(post['book'])}</div> */}
-                  <div>Book: {post['book']}</div>
-                  <div>Comments: {post['comment']}</div>              
+                  { post['book'].length > 0 && getBookTitle(post['book']) }
+                  { post['book'].length === 0 && <div>Book: No Books selected</div> }
+                  { post['comment'].length > 0 && getCommentDetail(post['comment']) }
+                  { post['comment'].length === 0 && <div>Comment: No Comments</div> }
+                  {/* <div>Comments: {post['comment']}</div>               */}
                 </Card.Text>
                 <Button className="delete"><Link to={`/post/${post['id']}`} className='post-card'>Edit</Link></Button>
+                <Button className="delete"><Link to={`/post/${post['id']}/comment`} className='post-card'>Comment</Link></Button>
               </Card.Body>
             </Card>        
           </Col>
@@ -74,19 +124,6 @@ function MyPosts(props) {
     }
     
   }
-
-  const [showAddPost, setShowAddPost] = useState(false);
-  const [targetAddPost, setTargetAddPost] = useState(null);
-  const refAddPost = useRef(null);
-
-  const handleClickAddPost = (event) => {
-    setShowAddPost(!showAddPost);
-    setTargetAddPost(event.target);
-  };
-
-  const onHideAddPost = () => {
-    setShowAddPost(!showAddPost);
-  };
 
   return (
     <div className="page post-card">
@@ -107,15 +144,13 @@ function MyPosts(props) {
               <Popover id="popover-contained">
                 <Popover.Header as="h3">Add Post</Popover.Header>
                 <Popover.Body>
-                  <Add user={props.user}/>
+                  <AddPost user={props.user}/>
                 </Popover.Body>
               </Popover>
             </Overlay>
           </div>
         </Row>
-        <Row >{posts.length > 0 &&  renderPosts() }</Row>
-        <Row className="m-3"></Row>
-        
+        <Row className="m-3">{posts.length > 0 &&  renderPosts() }</Row>
       </Container>  
     </div>
   )

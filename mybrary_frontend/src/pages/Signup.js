@@ -38,7 +38,16 @@ function Signup() {
         password: password,
         first_name: first_name,
         last_name: last_name,
-        email: email
+        email: email.charAt,
+        book: [],
+        comment: [],
+        friends: [],
+        library: null,
+        post: [],
+        request_from: [],
+        request_to: [],
+        social_group: [],
+        wishList: null,
       }
 
       const data = await MybraryApi.createNewUser(signupData)
