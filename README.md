@@ -67,7 +67,7 @@ createdb group_proj_db
 sudo service postgresql start
 ```
 
-* Move into `Back-end` directory and migrate the models into your database.
+* Move into `mybrary_app` directory and migrate the models into your database.
 
 ```bash
 python manage.py makemigrations
