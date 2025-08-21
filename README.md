@@ -108,7 +108,7 @@ python3 manage.py runserver
 
 ### **Frontend Setup**
 
-* Move into `frontend/doggy-pile` directory and install packages.
+* Move into `mybrary_frontend` directory and install packages.
 
 ```bash
 npm install
@@ -124,7 +124,7 @@ npm start
 
 ## Git Workflow
 
-### **Important note:** Make sure you are committing your changes on your own branch before merging onto the main branch!
+### **Important note:** Make sure you are committing your changes on your own branch before merging onto the main branch
 
 * Ensure you're in the main branch by checking with: `$ git branch -a`
 * Pull from the main branch with this command to get the most up to date version (unless you had just cloned the repo): `$ git pull origin main`
@@ -156,4 +156,4 @@ git merge <branch-name>
 
 ** If there are any issues, run `$ git status` to pinpoint their location.
 
-[Back to top](https://github.com/quebecplatoon/gp_doggy_pile_app#doggypile)
+[Back to top](#mybrary)
